@@ -1,0 +1,32 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Admin",
+      "login": "admin",
+      "senha": "admin",
+      "perfil": "ADMIN"
+    },
+    {
+      "id": 2,
+      "nome": "Gerente",
+      "login": "gerente",
+      "senha": "gerente",
+      "perfil": "GERENTE"
+    },
+    {
+      "id": 3,
+      "nome": "Func",
+      "login": "func",
+      "senha": "func",
+      "perfil": "FUNC"
+    },
+    {
+      "nome": "fabio",
+      "nickname": "fabio",
+      "password": "fabio",
+      "perfil": "FUNC",
+      "id": 4
+    }
+  ]
+}

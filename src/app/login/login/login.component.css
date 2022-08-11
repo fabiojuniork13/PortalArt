@@ -1,0 +1,39 @@
+.loginLogo {
+    max-width: 250px;
+    /* margin: 20px auto; */
+}
+
+.loginLogoBox {
+    flex-direction: column;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+    padding-bottom: 30px;
+}
+
+.loginBox {
+    background: white;
+    color: #00386b;
+    max-width: 400px;
+    margin: 20px auto;
+    /* border: #00386b 1px solid; */
+    /* border-radius: 5px; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginBtn {
+    justify-content: flex-end;
+    display: flex;
+	background: #00386b;
+	color: white;
+}
+
+.loginSubtitle {
+    /* margin: 20px 10px; */
+    font-size: small;
+    font-style: italic;
+}

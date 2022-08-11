@@ -1,0 +1,308 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading == true" value="40"></mat-progress-bar>
+<!-- <br/>
+<h1 class="h">Portal de Consultas</h1>
+
+ <table class="table table-striped table-bordered table-hover">
+    <tbody>
+        
+        <tr *ngFor="let imagem of imagens">
+            <td> {{imagem.path}} </td>
+            <td> {{imagem.name}} </td>
+            <td class="text-center" style="width: 300px">
+                <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info">
+                    <i class="fa fa-edit" aria-hidden="true"></i> Editar
+                </a>
+                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger">
+                    <i class="fa fa-times" aria-hidden="true"></i> Remover
+                </a>
+            </td>
+        <tr>
+    </tbody>
+</table>
+<p *ngIf="imagens.length==0">Nenhuma pessoa cadastrada.</p> 
+
+
+
+<div class="popup">
+	<span onclick="this.parentElement.style.display='none'" class="btn_fechar">&times;</span>
+	<img id="imagemGrande">
+</div>
+<mat-form-field appearance="fill" class="h">
+  <mat-label>Equipamento</mat-label>  
+  <mat-select>
+    <ng-container *ngFor="let folder of folders" style="margin: 0.5%;">
+      <mat-option value="[folder.name]" (click)="abrir([folder.name])">{{folder.name}}</mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="xlanes.length > 0" appearance="fill">
+  <mat-label>Faixa</mat-label>
+  <mat-select>
+    <ng-container *ngFor="let lane of xlanes" style="margin: 0.5%;">
+      <div *ngIf="xlanes.length > 0">
+      <mat-option value="1" (click)="abrirImagem([_folder],[lane.name])">{{lane.name}}</mat-option>
+    </div>
+    </ng-container>
+  </mat-select>
+</mat-form-field>
+<i *ngIf="imagens.length > 0">{{imagens.length}} resultados.</i>
+<div fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%;">
+  <ng-container *ngFor="let imagem of imagens" style="margin: 0.5%;">
+    <mat-card class="mat-card">
+          
+      <mat-card-title class="mat-card-title" >
+        
+      </mat-card-title>
+      <mat-card-header class="mat-card-image">
+        <img id="imag" [src]="'data:image/jpg;base64,' + imagem" (click)="mostrarImagem(imagem)">
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div> -->
+
+
+ <mat-drawer-container style="height: 95vh;">
+  <mat-drawer mode="side" opened> <br/><p class="text">ARTISTAS</p>
+    <mat-accordion> 
+      <ng-container *ngFor="let source of sources">
+
+        <mat-expansion-panel id="panel" (click)="listarTodos(source.name)" (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+            <p>{{source.name}}</p>
+            </mat-panel-title>
+     
+          </mat-expansion-panel-header>
+        <div *ngFor="let folder of folders">
+          <p class="btn btn-outline-secondary btn-sm" style="margin-left: 10px;" aria-pressed="true" (click)="abrir([source.name], [folder.name])">{{folder.name}}</p>
+        </div>
+        </mat-expansion-panel>
+      </ng-container> 
+    </mat-accordion> 
+
+    
+
+<!-- <mat-accordion>
+  
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      
+    </mat-expansion-panel-header>
+    
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      
+    </mat-expansion-panel-header>
+    
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion> -->
+
+
+      <!-- <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title (click)="listarTodos(contract.name)">
+             {{contract.name}}
+          </mat-panel-title>
+          
+        </mat-expansion-panel-header>
+        <div *ngFor="let folder of folders">
+          <p (click)="abrir([this.folder.name])">{{folder!.name!.substring(folder.name!.length-4, folder.name!.length)}}</p>
+        </div>
+      </mat-expansion-panel> -->
+      
+    <!-- </mat-accordion> -->
+   
+  </mat-drawer>
+  <mat-drawer-content>
+    <br/>
+<h1 class="h">Portal de Artes 
+  <i *ngIf="_source"> | {{_source}}</i>
+  <i *ngIf="this._folder"> - {{_folder}}</i>
+  <i class="msg" *ngIf="folders.length == 0 && firstTime == false"> | Pastas não encontrados.</i>
+  <i class="msg" *ngIf="_msg"> | {{_msg}}</i>
+  <!-- <i class="msg" *ngIf="imagensL1.length == 0 && 
+            imagensL2.length == 0 &&
+            imagensL3.length == 0 &&
+            imagensL4.length == 0"> | Imagens não encontradas ou indisponíveis.</i> -->
+</h1>
+
+<!-- <table class="table table-striped table-bordered table-hover">
+    <tbody>
+        
+        <tr *ngFor="let imagem of imagens">
+            <td> {{imagem.path}} </td>
+            <td> {{imagem.name}} </td>
+            <td class="text-center" style="width: 300px">
+                <a href="#" title="Editar" alt="Editar" class="btn btn-xs btn-info">
+                    <i class="fa fa-edit" aria-hidden="true"></i> Editar
+                </a>
+                <a href="#" title="Remover" alt="Remover" class="btn btn-xs btn-danger">
+                    <i class="fa fa-times" aria-hidden="true"></i> Remover
+                </a>
+            </td>
+        <tr>
+    </tbody>
+</table>
+<p *ngIf="imagens.length==0">Nenhuma pessoa cadastrada.</p> -->
+
+
+
+<div class="popup">
+	<span onclick="this.parentElement.style.display='none'" class="btn_fechar">&times;</span>
+	<img id="imagemGrande">
+</div>
+<div class="h">
+<!-- <mat-form-field appearance="fill" class="h">
+  <mat-label>Equipamento</mat-label>  
+  <mat-select>
+    <ng-container *ngFor="let folder of folders" style="margin: 0.5%;">
+      <mat-option value="[folder.name]" (click)="abrir([folder.name])">{{folder.name}}</mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field> -->
+
+<!-- <mat-form-field *ngIf="xlanes.length > 0" appearance="fill">
+  <mat-label>Faixa</mat-label>
+  <mat-select>
+    <ng-container *ngFor="let lane of xlanes" style="margin: 0.5%;">
+      <div *ngIf="xlanes.length > 0">
+      <mat-option value="1" (click)="abrirImagemPorLane([_folder])">{{lane.name}}</mat-option>
+    </div>
+    </ng-container>
+  </mat-select>
+</mat-form-field> -->
+<br/>
+<mat-accordion *ngIf="imagensL1.length > 0">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        PROFILE 1
+      </mat-panel-title>
+      <mat-panel-description>
+        {{imagensL1.length}} resultados.
+      </mat-panel-description>
+      
+    </mat-expansion-panel-header>
+    <ng-container *ngFor="let imagem of imagensL1" style="margin: 0.5%;">
+      <mat-card class="mat-card">
+            
+        <mat-card-title class="mat-card-title" >
+          
+        </mat-card-title>
+        <mat-card-header class="mat-card-image">
+          <img id="imag" [src]="'data:image/jpg;base64,' + imagem" (click)="mostrarImagem(imagem)">
+        </mat-card-header>
+        <mat-card-content>
+          
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion *ngIf="imagensL2.length > 0">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        PROFILE 2
+      </mat-panel-title>
+      <mat-panel-description>
+        {{imagensL2.length}} resultados.
+      </mat-panel-description>
+      
+    </mat-expansion-panel-header>
+    <ng-container *ngFor="let imagem of imagensL2" style="margin: 0.5%;">
+      <mat-card class="mat-card">
+            
+        <mat-card-title class="mat-card-title" >
+          
+        </mat-card-title>
+        <mat-card-header class="mat-card-image">
+          <img id="imag" [src]="'data:image/jpg;base64,' + imagem" (click)="mostrarImagem(imagem)">
+        </mat-card-header>
+        <mat-card-content>
+          
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion *ngIf="imagensL3.length > 0">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        PROFILE 3
+      </mat-panel-title>
+      <mat-panel-description>
+        {{imagensL3.length}} resultados.
+      </mat-panel-description>
+      
+    </mat-expansion-panel-header>
+    <ng-container *ngFor="let imagem of imagensL3" style="margin: 0.5%;">
+      <mat-card class="mat-card">
+            
+        <mat-card-title class="mat-card-title" >
+          
+        </mat-card-title>
+        <mat-card-header class="mat-card-image">
+          <img id="imag" [src]="'data:image/jpg;base64,' + imagem" (click)="mostrarImagem(imagem)">
+        </mat-card-header>
+        <mat-card-content>
+          
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion *ngIf="imagensL4.length > 0">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        PROFILE 4
+      </mat-panel-title>
+      <mat-panel-description>
+        {{imagensL4.length}} resultados.
+      </mat-panel-description>
+      
+    </mat-expansion-panel-header>
+    <ng-container *ngFor="let imagem of imagensL4" style="margin: 0.5%;">
+      <mat-card class="mat-card">
+            
+        <mat-card-title class="mat-card-title" >
+          
+        </mat-card-title>
+        <mat-card-header class="mat-card-image">
+          <img id="imag" [src]="'data:image/jpg;base64,' + imagem" (click)="mostrarImagem(imagem)">
+        </mat-card-header>
+        <mat-card-content>
+          
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    
+  </mat-expansion-panel>
+</mat-accordion>
+
+</div>
+  </mat-drawer-content>
+</mat-drawer-container>

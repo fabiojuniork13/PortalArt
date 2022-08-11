@@ -1,0 +1,129 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading == true" value="40"></mat-progress-bar>
+<div *ngIf="message" class="alert alert-danger
+                            alert-dismissible fade show" role="alert" >
+    {{ message }}
+    <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="$event.preventDefault()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="loginBox">
+<div class="loginLogoBox">
+    <img class="loginLogo" src="assets/QV3xVIA.png"/>
+    <span class="loginSubtitle">:: login - PortalARt ::</span>
+</div>
+<form #formLogin="ngForm">
+    <div class="row">
+    <div class="input-field loginInput">
+        <input type="text" class="form-control" id="usuario" name="usuario"
+        [(ngModel)]="login.login" #usuario="ngModel" required>
+        <div *ngIf="usuario.errors && (usuario.dirty || usuario.touched)"
+            class="alert alert-danger">
+            <div [hidden]="!usuario.errors?.['required']">
+                Digite o usuário
+            </div>
+        </div>
+
+        <label class="active loginLabel" for="usuario"> Usuário</label>
+    </div>
+    </div>
+    <div class="row">
+        <div class="input-field loginInput">
+        <input type="password" class="form-control" id="senha" name="senha"
+            [(ngModel)]="login.senha" #senha="ngModel" required>
+
+        <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
+            <div [hidden]="!senha.errors?.['required']">
+                Digite a senha
+            </div>
+        </div>
+        <label class="active loginLabel" for="senha"> Senha</label>
+        </div>
+    </div>
+    <br/>
+    <div class="row loginBtn">
+    <button type="button" class="btn waves-effect waves-light pk-blue"
+        (click)="logar()"
+        [disabled]="!formLogin.form.valid">
+        <i style="color: white;" class="fa fa-save" aria-hidden="true"></i> <a style="color: white"> Logar</a>
+    </button>
+    </div>
+</form>
+</div>
+<!-- </ng-template> -->
+
+
+
+
+<!-- <div *ngIf="message" class="alert alert-danger
+                            alert-dismissible fade show" role="alert" >
+    {{ message }}
+    <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="$event.preventDefault()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<h1>Login</h1>
+<div class="well">
+    <form #formLogin="ngForm">
+        <div class="form-group">
+            <label for="usuario">Usuario:</label>
+            <input type="text" class="form-control" id="usuario" name="usuario"
+                [(ngModel)]="login.usuario" #usuario="ngModel" required>
+            <div *ngIf="usuario.errors && (usuario.dirty || usuario.touched)"
+                class="alert alert-danger">
+                <div [hidden]="!usuario.errors?.['required']">
+                    Digite o usuário
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="text" class="form-control" id="senha" name="senha"
+                [(ngModel)]="login.senha" #senha="ngModel" required>
+            <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
+                <div [hidden]="!senha.errors?.['required']">
+                    Digite a senha
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary"
+                (click)="logar()"
+                [disabled]="!formLogin.form.valid">
+            <i class="fa fa-save" aria-hidden="true"></i> Logar
+        </button>
+         <a class="btn btn-secondary"
+            [routerLink]="['/usuarios/novo']">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Registrar
+        </a>  
+    </form>
+</div> -->
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- <div class="well">
+    <form #formLogin="ngForm">
+        <div class="form-group">
+            <label for="nickname">Nome:</label>
+            <input type="text" class="form-control" id="nickname" name="nickname" [(ngModel)]="user.nickname" #nickname="ngModel"
+                minlength="2" required>
+            <div *ngIf="nickname.errors && (nickname.dirty || nickname.touched)" class="alert alert-danger">
+                <div [hidden]="!nickname.errors?.['required']"> Digite o nome da pessoa. </div>
+                <div [hidden]="!nickname.errors?.['minlength']"> O nome deve conter ao menos 2 caracteres. </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">password:</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+            <div *ngIf="password.errors && (password.dirty || password.touched)" class="alert alert-danger">
+                <div [hidden]="!password.errors?.['required']"> Digite a senha para logar. </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="login()" [disabled]="!formLogin.form.valid">
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Entrar
+            </button>
+            
+        </div>
+    </form>
+</div> -->

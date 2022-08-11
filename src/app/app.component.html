@@ -1,0 +1,29 @@
+<mat-progress-bar mode="indeterminate" *ngIf="loading == true" value="40"></mat-progress-bar>
+<div class="conteiner-fluid" >
+  <div *ngIf="usuarioLogado" style="width: 100%;">
+    <nav class="navbar navbar-expand-md n navbar-dark bg-dark" >
+      <a class="navbar-brand nav-link" href="#" routerLink="/pessoas">
+        <i class="fa fa-street-view"></i>
+      </a>
+      <div class="navbar-collapse collapsed" id="navbarContent"  >
+        <ul class="navbar-nav ml-auto" style="position: fixed">
+          <li *ngIf="user.perfil == 'ADMIN'" class="nav-item" ngbDropdown>
+            <a class="nav-link" href="#" routerLink="/usuarios" (click)="$event.preventDefault()">Usuários</a>
+            <!-- <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button"> Cadastro</a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+              <a ngbDropdownItem href="#" routerLink="/usuarios"
+                (click)="$event.preventDefault()">Usuários</a> -->
+            <!-- </div> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/portal" (click)="$event.preventDefault()">Portal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="margin-left: 85vw;" (click)="logout()">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <router-outlet></router-outlet>
+</div>
